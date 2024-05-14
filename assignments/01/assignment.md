@@ -48,7 +48,7 @@
 <img src="./img/spaVSmpa.png">
 
 - 전통적인 웹 개발 방식은 Multi Page Application을 제작하는 것
-- - 리액트를 사용한 웹 개발 방식은 Single Page Application을 제작하는 것
+  - 리액트를 사용한 웹 개발 방식은 Single Page Application을 제작하는 것
   <ul>
   <li>SPA는 한 번의 페이지 로드로 전체 웹 서비스에 필요한 모든 콘텐츠를 동적으로 렌더링하는 웹 애플리케이션 방식이에요.</li>
   <li>사용자의 상호작용에 따라 필요한 부부만 JavaScript를 통해 갱신해요. 그래서 전체 페이지를 새로 불러오는 대신, 필요한 데이터만 주고받을 수 있죠.</li>
