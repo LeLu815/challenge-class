@@ -237,7 +237,7 @@ function App() {
 ## 07. React Component의 생애주기
 
 <img src="./img/reactLifeCycle.png">
-<img src="./img/reactLifeCycle.png">
+<img src="./img/reactHookFlowDiagram.png">
 
 # 05. 기타
 
