@@ -46,6 +46,7 @@
 ## 01. MPA → SPA
 
 <img src="./img/spaVSmpa.png">
+
 - 전통적인 웹 개발 방식은 Multi Page Application을 제작하는 것
 - 리액트를 사용한 웹 개발 방식은 Single Page Application을 제작하는 것
 <ul>
