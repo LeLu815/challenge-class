@@ -8,6 +8,7 @@
 }
 
 .game-device {
+  position: relative;
   width: 450px;
   height: 800px;
   background-color: black;
@@ -21,6 +22,18 @@
   border-radius: 10px;
   box-sizing: border-box;
   padding: 15px 0;
+  border-radius: 19px;
+  box-shadow: 3px 3px 0px rgb(149, 212, 237);
+}
+.device-thickness {
+  position: absolute;
+  width: 463px;
+  height: 815px;
+  background-color: #357289;
+  z-index: -1;
+  top: 1px;
+  left: 1px;
+  border-radius: 30px;
 }
 
 .screen-outer {
@@ -81,4 +94,10 @@
 .flip-right {
   transform: scaleX(1); /* 원래 상태로 돌림 */
   transform-origin: center;
+}
+
+.console-box {
+  width: 60px;
+  height: 150px;
+  position: relative;
 }

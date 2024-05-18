@@ -1,13 +1,15 @@
 import { useRef, useState } from "react";
 
 import styles from "./App.module.css";
+import monsterLogo from "./assets/logo.png";
 import pikachu from "./assets/pikachu.png";
 
+import Button from "./components/Button/Button";
 import Character from "./components/Character/Character";
 
 const KEY_LIST = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
-const MAX_SCREEN = { right: "320", left: "0", up: "0", down: "320" };
-const MOVING_GAP = "32";
+const MAX_SCREEN = { right: 320, left: 0, up: 0, down: 320 };
+const MOVING_GAP = 32;
 
 function App() {
   const timerRef = useRef(null);
@@ -35,6 +37,7 @@ function App() {
 
   yPositionRef.current = mainPosition.y;
   const handlePressKey = (e) => {
+    console.log(e.key);
     switch (e.key) {
       case KEY_LIST[0]:
         // 오른쪽
@@ -114,9 +117,7 @@ function App() {
     if (jumpingRef.current) {
       return;
     }
-    console.log(mainPosition.y);
     throttle(() => {
-      console.log(mainPosition.y);
       handlePressKey(e);
     }, 10);
   });
@@ -124,6 +125,7 @@ function App() {
   return (
     <div className={styles["background"]}>
       <div className={styles["game-device"]}>
+        <div className={styles["device-thickness"]}></div>
         <div className={styles["screen-outer"]}>
           <div className={styles["screen-inner"]}>
             <div className={styles["screen"]}>
@@ -143,6 +145,14 @@ function App() {
             </div>
           </div>
         </div>
+        <img className={styles["logo"]} src={monsterLogo} />
+        <div className={styles["console-box"]}>
+          <Button position="top">X</Button>
+          <Button position="left">Y</Button>
+          <Button position="rignt">A</Button>
+          <Button position="bottom">B</Button>
+        </div>
+        <div style={{ height: "1px" }}></div>
       </div>
     </div>
   );

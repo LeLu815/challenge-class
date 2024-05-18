@@ -1,0 +1,121 @@
+.outer-button {
+  position: absolute;
+}
+
+.button {
+  border-radius: 999px;
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  border-width: 0;
+  padding: 0 8px 12px;
+  min-width: 45px;
+  box-sizing: border-box;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  color: white;
+}
+.button-top span {
+  z-index: 5;
+  padding: 0 2px;
+}
+
+.button-top {
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 4;
+  padding: 16px 16px;
+  box-sizing: border-box;
+  transform: translateY(0);
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
+  transition-property: transform;
+  transition-duration: 0.2s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.button:active .button-top {
+  transform: translateY(6px);
+  border-radius: 999px;
+}
+.button-top::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  border-radius: 999px;
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+  background-image: radial-gradient(#42a7cb, #0c83a9);
+  text-align: center;
+  color: #fff;
+  box-shadow: inset 0 0 0px 1px rgba(255, 255, 255, 0.2),
+    0 1px 2px 1px rgba(255, 255, 255, 0.2);
+  transition-property: border-radius, padding, width, transform;
+  transition-duration: 0.2s;
+}
+
+.button:active .button-top::after {
+  padding: 0 2px;
+  border-radius: 999px;
+}
+
+.button-bottom {
+  border-radius: 999px;
+  position: absolute;
+  z-index: 2;
+  bottom: 4px;
+  left: 4px;
+  padding-top: 6px;
+  width: calc(100% - 8px);
+  height: calc(100% - 10px);
+  box-sizing: content-box;
+  background-color: #195d87;
+  background-image: radial-gradient(
+      4px 8px at 4px calc(100% - 8px),
+      rgba(255, 255, 255, 0.348),
+      transparent
+    ),
+    radial-gradient(
+      4px 8px at calc(100% - 4px) calc(100% - 8px),
+      rgba(255, 255, 255, 0.383),
+      transparent
+    ),
+    radial-gradient(16px at -4px 0, white, transparent),
+    radial-gradient(16px at calc(100% + 4px) 0, white, transparent);
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 3px 3px rgba(0, 0, 0, 0.4);
+  transition-property: border-radius, padding-top;
+  transition-duration: 0.2s;
+}
+
+.button:active .button-bottom {
+  border-radius: 999px;
+  padding-top: 0;
+}
+
+.button-base {
+  position: absolute;
+  z-index: 1;
+  top: 4px;
+  left: 0;
+  border-radius: 999px;
+  width: 100%;
+  height: calc(100% - 4px);
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px 0 black, inset 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.top {
+}
+.left {
+}
+.right {
+}
+.bottom {
+}
