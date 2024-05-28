@@ -29,7 +29,7 @@ function memoReducer(prevState = initialState, action) {
       });
 
     case delete_action:
-      return prevState.filter((memo) => memo.id !== action.payload.id);
+      return prevState.filter((memo) => memo.id !== action.payload);
 
     default:
       return prevState;

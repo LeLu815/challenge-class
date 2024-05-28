@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { delete_action } from "../redux/reducers/memo.reducer";
 
 function Controller() {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { memoId } = useParams();
 
   const memoList = useSelector((state) => state.memo);
 
@@ -22,10 +24,12 @@ function Controller() {
         alert("하나 이상의 메모는 남겨두어야 합니다.");
         return;
       } else {
-        return dispatch({
-          type: "",
-          payload: "",
+        dispatch({
+          type: delete_action,
+          payload: memoId,
         });
+        const redirectId = memoList[memoList.length - 2].id;
+        return navigate(`/memo/${redirectId}`);
       }
     }
   };

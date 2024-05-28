@@ -40,6 +40,7 @@ function Textarea() {
     };
   } else {
     memoContent = memo.find((memoSignle) => memoSignle.id === memoId);
+    console.log("memoContent :", memoContent);
   }
 
   const handleChagneMemo = (e) => {
@@ -78,7 +79,7 @@ function Textarea() {
     if (currentLocation !== "/" && memoContent) {
       setWriting(memoContent.content);
     }
-  }, []);
+  }, [memoId]);
 
   useEffect(() => {
     // 경로가 '/'로 바뀌면 state를 초기화
