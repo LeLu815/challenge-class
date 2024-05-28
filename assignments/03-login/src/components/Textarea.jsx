@@ -1,6 +1,7 @@
+import debounce from "lodash.debounce";
 import { v4 as uuidv4 } from "uuid";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router";
 import styled from "styled-components";
@@ -15,6 +16,20 @@ function Textarea() {
   const location = useLocation();
   const { memoId } = useParams();
   const memo = useSelector((state) => state.memo);
+
+  // 디바운스된 콜백 함수 생성
+  const debouncedUpdateMemo = useCallback(
+    debounce((id, content) => {
+      dispatch({
+        type: update_action,
+        payload: {
+          id: id,
+          content: content,
+        },
+      });
+    }, 200), // 디바운스 지연 시간 (밀리초)
+    [] // 의존성 배열
+  );
 
   let memoContent;
   const currentLocation = location.pathname;
@@ -41,13 +56,14 @@ function Textarea() {
       navigate(`/memo/${newId}`);
     } else {
       setWriting(e.target.value);
-      dispatch({
-        type: update_action,
-        payload: {
-          id: memoId,
-          content: e.target.value,
-        },
-      });
+      debouncedUpdateMemo(memoId, e.target.value);
+      // dispatch({
+      //   type: update_action,
+      //   payload: {
+      //     id: memoId,
+      //     content: e.target.value,
+      //   },
+      // });
     }
   };
 

@@ -73,15 +73,14 @@ const StMemoLi = styled.li`
 
 const StMemoContent = styled.div`
   margin: 0px 0px 2px;
+  width: 180px;
+  height: 20px;
   font-size: 17px;
   font-weight: 700;
-  text-overflow: ellipsis;
-  overflow-x: hidden;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  height: 20px;
   color: black;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 const StMemoTime = styled.div`
