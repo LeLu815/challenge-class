@@ -1,24 +1,38 @@
-import { v4 as uuidv4 } from "uuid";
-
 export const add_action = "memo/ADD";
 export const delete_action = "memo/DELETE";
 export const update_action = "memo/UPDATE";
 
-const initialState = {
-  latestId: uuidv4(),
-  memoList: [{}],
-};
+const initialState = [];
 
-function memoReducer(prevState = initalState, action) {
+function memoReducer(prevState = initialState, action) {
   switch (action.type) {
     case add_action:
-      return;
-
-    case delete_action:
-      return;
+      return [
+        ...prevState,
+        {
+          id: action.payload.id,
+          createdAt: Date.now(),
+          content: action.payload.content,
+        },
+      ];
 
     case update_action:
-      return;
+      return prevState.map((memo) => {
+        if (memo.id === action.payload.id) {
+          return {
+            ...memo,
+            content: action.payload.content,
+          };
+        } else {
+          return memo;
+        }
+      });
+
+    case delete_action:
+      return prevState.filter((memo) => memo.id !== action.payload.id);
+
+    default:
+      return prevState;
   }
 }
 
