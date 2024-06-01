@@ -1,4 +1,5 @@
 import { produce } from "immer";
+import { v4 as uuidv4 } from "uuid";
 
 import { createContext, useContext, useState } from "react";
 import Toast from "../components/toast/Toast";
@@ -15,10 +16,15 @@ export function ModalProvider({ children }) {
   const [toastList, setToastList] = useState([]);
 
   const value = {
-    add: (element) => {
+    add: ({ title, content, time }) => {
       setToastList((prevList) => {
         return produce(prevList, (draft) => {
-          draft.push(element);
+          draft.push({
+            id: uuidv4(),
+            title,
+            content,
+            time,
+          });
         });
       });
     },
@@ -29,17 +35,28 @@ export function ModalProvider({ children }) {
 
   return (
     <ModalContext.Provider value={value}>
-      {children}
-      {toastList.length !== 0 && (
-        <ul>
-          {toastList.map((toast) => (
-            <Toast key={toast.id}>{toast}</Toast>
-          ))}
-        </ul>
-      )}
+      <div className={div_outer_container}>
+        {children}
+        {toastList.length !== 0 && (
+          <ul className={ul_toast_container}>
+            {toastList.map((toast) => (
+              <Toast
+                key={toast.id}
+                title={toast.title}
+                content={toast.content}
+                time={toast.time}
+                id={toast.id}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
     </ModalContext.Provider>
   );
 }
 
 // 위에서 생성한 context를 이용하여 토스트 훅을 생성
 export const useModal = () => useContext(ModalContext);
+
+const div_outer_container = "w-screen h-screen grid place-items-center";
+const ul_toast_container = "fixed bottom-6 right-6 grid grid-cols-1 gap-y-3";
