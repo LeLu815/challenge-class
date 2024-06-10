@@ -33,7 +33,6 @@ export default function Toast({ title, content, time = 2000, id }) {
     <li
       className={liClassName}
       onTransitionEnd={() => {
-        console.log("isShow :", isShow);
         if (!isShow) {
           modalFunc.delete(id);
         }
