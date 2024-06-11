@@ -7,3 +7,10 @@ export async function getProduct(productId) {
 
   return data;
 }
+export async function getProducts() {
+  const endpoint = `${BASE_URL}/products`;
+  const response = await fetch(endpoint);
+  const data = await response.json();
+
+  return data;
+}

@@ -7,13 +7,6 @@ export async function getBrands() {
 
   return data;
 }
-// export async function getBrands() {
-//   const endpoint = `${BASE_URL}/brands`;
-//   const response = await fetch(endpoint);
-//   const data = await response.json();
-
-//   return data;
-// }
 
 export async function getBrand(brandId) {
   const endpoint = `${BASE_URL}/brands/${brandId}`;

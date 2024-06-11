@@ -13,6 +13,7 @@ function HomePage_() {
       try {
         const products = await api.products.getProducts();
         setProducts(products);
+        setIsSuccess(true);
       } catch (e) {
         setIsError(true);
       } finally {

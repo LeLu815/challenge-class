@@ -9,7 +9,12 @@ class ProductsAPI {
     const result = data.result;
     return result;
   }
-  getProduct() {}
+  async getProduct(productId) {
+    const response = await this.#client.get(`/products/${productId}`);
+    const data = response.data;
+    const result = data.result;
+    return result;
+  }
   deleteProduct() {}
   deleteProducts() {}
 }
