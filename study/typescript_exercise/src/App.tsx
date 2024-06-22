@@ -1,12 +1,17 @@
-import Counter from "./components/Counter";
-import ModalControls from "./components/Modal/ModalControls";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import PostForm from "./components/Posts/PostForm";
+import Posts from "./components/Posts/Posts";
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <div>
-      <ModalControls />
-      <Counter />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <>
+        <Posts />
+        <PostForm />
+      </>
+    </QueryClientProvider>
   );
 }
 
