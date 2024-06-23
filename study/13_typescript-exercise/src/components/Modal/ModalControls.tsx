@@ -3,14 +3,10 @@ import { useModal } from "./Modal.context";
 
 function ModalControls() {
   const modal = useModal();
-  const handleClickButton: React.MouseEventHandler<HTMLButtonElement> = () => {
+  const handleClick = () => {
     modal.open(<Modal />);
   };
-  return (
-    <div>
-      <button onClick={handleClickButton}>모달 띄우기</button>
-    </div>
-  );
+  return <button onClick={handleClick}>모달을 열어 주세요</button>;
 }
 
 export default ModalControls;
