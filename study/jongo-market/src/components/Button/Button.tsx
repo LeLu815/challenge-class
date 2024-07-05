@@ -3,10 +3,8 @@ import Link from "next/link";
 import { ComponentProps } from "react";
 
 type ButtonProps = ButtonVariantProps &
-  (
-    | ({ href?: undefined } & ComponentProps<"button">)
-    | ({ href: string } & ComponentProps<typeof Link>)
-  );
+| ({ href?: undefined } & ComponentProps<"button">)
+| ({ href: string } & ComponentProps<typeof Link>);
 type ButtonVariantProps = VariantProps<typeof buttonVariant>;
 
 const buttonVariant = cva(
